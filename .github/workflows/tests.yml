@@ -61,7 +61,7 @@ jobs:
         with:
           files: ./coverage/coverage-final.json
           flags: unittests
-          name: codecov-umbrella
+          name: codecov-audiophile
           fail_ci_if_error: true
           verbose: true
         env:
