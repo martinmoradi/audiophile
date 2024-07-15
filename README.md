@@ -10,12 +10,12 @@
 
 ## 2. Dev Environment Setup
 
-- [ ] Set up Vitest for unit testing
-- [ ] Set up React Testing Library for component testing
-- [ ] Configure Playwright for E2E testing
-- [ ] Set up Husky for pre-commit hooks
-- [ ] Configure GitHub Actions for CI/CD
-- [ ] Write initial tests for basic setup
+- [x] Set up Vitest for unit testing
+- [x] Set up React Testing Library for component testing
+- [x] Configure Playwright for E2E testing
+- [x] Set up Husky for pre-commit hooks
+- [x] Configure GitHub Actions for CI/CD
+- [x] Write initial tests for basic setup
 
 ## 3. UI Foundation
 
