@@ -19,6 +19,7 @@
 
 ## 3. UI Foundation
 
+- [x] Setup shadcn/ui
 - [ ] Create Tailwind theme (colors, fonts, spacing, etc.)
 - [ ] Create reusable UI components (Button, Card, Input, etc.)
 - [ ] Implement responsive layout components
