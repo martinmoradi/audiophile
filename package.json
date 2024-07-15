@@ -15,7 +15,6 @@
     "test": "vitest run",
     "test:e2e": "exec playwright test",
     "test:coverage": "vitest run --coverage",
-    "test:e2e:coverage": "playwright test --coverage",
     "prepare": "husky"
   },
   "dependencies": {
