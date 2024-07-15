@@ -6,7 +6,7 @@ const HamburgerIcon = (props: React.SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g fill="#FFF" fillRule="evenodd">
+    <g fill="currentColor" fillRule="evenodd">
       <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
     </g>
   </svg>
