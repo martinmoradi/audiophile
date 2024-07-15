@@ -5,6 +5,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      POSTGRES_URL: ${{ vars.POSTGRES_URL }}
+      POSTGRES_PRISMA_URL: ${{ vars.POSTGRES_PRISMA_URL }}
+      POSTGRES_URL_NO_SSL: ${{ vars.POSTGRES_URL_NO_SSL }}
+      POSTGRES_URL_NON_POOLING: ${{ vars.POSTGRES_URL_NON_POOLING }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
