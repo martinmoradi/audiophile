@@ -1,2 +1,2 @@
+pnpm lint --fix
 pnpm test
-pnpx lint-staged
