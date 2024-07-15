@@ -11,6 +11,7 @@
 ## 2. Dev Environment Setup
 
 - [ ] Set up Vitest for unit testing
+- [ ] Set up React Testing Library for component testing
 - [ ] Configure Playwright for E2E testing
 - [ ] Set up Husky for pre-commit hooks
 - [ ] Configure GitHub Actions for CI/CD
@@ -27,8 +28,8 @@
 
 ## 4. Database Setup
 
-- [ ] Set up Vercel Postgres (or Neon)
-- [ ] Configure Drizzle ORM
+- [x] Set up Vercel Postgres (or Neon)
+- [x] Configure Drizzle ORM
 - [ ] Create initial schema for products and categories
 - [ ] Set up database migrations
 - [ ] Write tests for database operations
