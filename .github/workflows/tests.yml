@@ -37,9 +37,6 @@ jobs:
       - name: Run Vitest tests with coverage
         run: pnpm test:coverage
 
-      - name: Print Coverage Directory
-        run: ls -R ./coverage
-
       - name: Build Next.js for E2E tests
         run: pnpm run build
 
