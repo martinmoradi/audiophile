@@ -17,6 +17,43 @@ const config = {
         "2xl": "1400px",
       },
     },
+
+    fontSize: {
+      xs: [
+        "1.3rem",
+        { lineHeight: "2.5rem", letterSpacing: "0.1rem", fontWeight: "700" },
+      ],
+      sm: [
+        "1.4rem",
+        { lineHeight: "1.9rem", letterSpacing: "1rem", fontWeight: "400" },
+      ],
+      base: ["1.5rem", { lineHeight: "2.5rem", fontWeight: "500" }],
+      lg: [
+        "1.8rem",
+        { lineHeight: "2.4rem", letterSpacing: "0.13rem", fontWeight: "700" },
+      ],
+      xl: [
+        "2.4rem",
+        { lineHeight: "3.3rem", letterSpacing: "0.17rem", fontWeight: "700" },
+      ],
+      "2xl": [
+        "2.8rem",
+        { lineHeight: "3.8rem", letterSpacing: "0.2rem", fontWeight: "700" },
+      ],
+      "3xl": [
+        "3.2rem",
+        { lineHeight: "3.6rem", letterSpacing: "0.115rem", fontWeight: "700" },
+      ],
+      "4xl": [
+        "4rem",
+        { lineHeight: "4.4rem", letterSpacing: "0.15rem", fontWeight: "700" },
+      ],
+      "5xl": [
+        "5.6rem",
+        { lineHeight: "5.8rem", letterSpacing: "0.2rem", fontWeight: "700" },
+      ],
+    },
+
     colors: {
       primary: "hsl(22, 65%, 57%)",
       dark: "hsl(0, 0%, 6%)",
@@ -26,6 +63,7 @@ const config = {
       white: "hsl(0, 0%, 100%)",
       black: "hsl(0, 0%, 0%)",
     },
+
     extend: {
       keyframes: {
         "accordion-down": {

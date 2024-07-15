@@ -6,4 +6,13 @@
   html {
     font-size: 62.5%;
   }
+
+  .text-lg,
+  .text-xl,
+  .text-2xl,
+  .text-3xl,
+  .text-4xl,
+  .text-5xl {
+    @apply uppercase;
+  }
 }
