@@ -1,4 +1,4 @@
-const LogoSVGIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const LogoIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="143"
     height="25"
@@ -14,4 +14,4 @@ const LogoSVGIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export { LogoSVGIcon };
+export { LogoIcon };
