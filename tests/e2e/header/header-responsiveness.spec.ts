@@ -1,13 +1,11 @@
 import { test, expect, type Page } from "@playwright/test";
+import { VIEWPORTS } from "tests/e2e/viewports.constant";
 import { navItems } from "~/constants/navigation";
-
-const MOBILE_VIEWPORT = { width: 375, height: 667 };
-const TABLET_VIEWPORT = { width: 768, height: 1024 };
-const DESKTOP_VIEWPORT = { width: 1280, height: 720 };
 
 test.describe("Header Component - Responsiveness", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
+    await page.setViewportSize(VIEWPORTS.mobile);
   });
 
   async function expectMenuClosed(page: Page) {
@@ -30,7 +28,7 @@ test.describe("Header Component - Responsiveness", () => {
   }
 
   test("Header renders correctly on mobile", async ({ page }) => {
-    await page.setViewportSize(MOBILE_VIEWPORT);
+    await page.setViewportSize(VIEWPORTS.mobile);
 
     const hamburgerMenu = page.getByRole("button", { name: /toggle menu/i });
     await expect(hamburgerMenu).toBeVisible();
@@ -45,7 +43,7 @@ test.describe("Header Component - Responsiveness", () => {
   });
 
   test("Header renders correctly on tablet", async ({ page }) => {
-    await page.setViewportSize(TABLET_VIEWPORT);
+    await page.setViewportSize(VIEWPORTS.tablet);
 
     const hamburgerMenu = page.getByRole("button", { name: /toggle menu/i });
     await expect(hamburgerMenu).toBeVisible();
@@ -60,7 +58,7 @@ test.describe("Header Component - Responsiveness", () => {
   });
 
   test("Header renders correctly on desktop", async ({ page }) => {
-    await page.setViewportSize(DESKTOP_VIEWPORT);
+    await page.setViewportSize(VIEWPORTS.desktop);
 
     const hamburgerMenu = page.getByRole("button", { name: /toggle menu/i });
     await expect(hamburgerMenu).not.toBeVisible();
@@ -75,32 +73,32 @@ test.describe("Header Component - Responsiveness", () => {
   });
 
   test("Menu toggles correctly on mobile", async ({ page }) => {
-    await page.setViewportSize(MOBILE_VIEWPORT);
+    await page.setViewportSize(VIEWPORTS.mobile);
 
     const hamburgerMenu = page.getByRole("button", { name: /toggle menu/i });
     await expectMenuClosed(page);
 
     await hamburgerMenu.click();
     // Add a small delay to allow for any transitions
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(500);
     await expectMenuOpen(page);
 
     await hamburgerMenu.click();
     // Add a small delay to allow for any transitions
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(500);
     await expectMenuClosed(page);
   });
 
   test("Header adjusts correctly when resizing from mobile to desktop", async ({
     page,
   }) => {
-    await page.setViewportSize(MOBILE_VIEWPORT);
+    await page.setViewportSize(VIEWPORTS.mobile);
 
     const hamburgerMenu = page.getByRole("button", { name: /toggle menu/i });
     await expect(hamburgerMenu).toBeVisible();
     await expectMenuClosed(page);
 
-    await page.setViewportSize(DESKTOP_VIEWPORT);
+    await page.setViewportSize(VIEWPORTS.desktop);
 
     await expect(hamburgerMenu).not.toBeVisible();
     await expectMenuOpen(page);
