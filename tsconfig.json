@@ -8,6 +8,7 @@
     "resolveJsonModule": true,
     "moduleDetection": "force",
     "isolatedModules": true,
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
 
     /* Strictness */
     "strict": true,

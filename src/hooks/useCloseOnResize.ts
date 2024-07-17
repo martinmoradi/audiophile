@@ -5,7 +5,6 @@ const useCloseOnResize = (
 ): void => {
   useEffect(() => {
     const closeMenu = () => setIsOpen(false);
-
     window.addEventListener("orientationchange", closeMenu);
     window.addEventListener("resize", closeMenu);
 
