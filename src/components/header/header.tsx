@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Container } from "~/components/container";
 import { CartIcon } from "~/components/icons/cart";
 import { HamburgerMenuIcon } from "~/components/icons/hamburger";
@@ -10,11 +10,25 @@ import { useCloseOnResize } from "~/hooks/useCloseOnResize";
 import { usePreventScroll } from "~/hooks/usePreventScroll";
 import { cn } from "~/lib/utils";
 
+interface KeyboardEvent {
+  key: string;
+}
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   usePreventScroll(isMenuOpen);
   useCloseOnResize(setIsMenuOpen);
+
+  useEffect(() => {
+    const handleEscapeKey = (ev: KeyboardEvent) => {
+      if (ev.key === "Escape") setIsMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
 
   const navLinks = useMemo(
     () =>
