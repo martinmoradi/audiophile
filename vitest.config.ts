@@ -10,7 +10,7 @@ export default defineConfig({
     setupFiles: "./tests/vitest.setup.ts",
     reporters: ["default", "json"],
     css: true,
-    outputFile: "test-results.json",
+    outputFile: "test-results/vitest-output.json",
     exclude: ["**/node_modules/**", "**/tests/e2e/**"], // Exclude e2e tests
   },
   resolve: {
