@@ -5,21 +5,10 @@ import { Container } from "~/components/container";
 import { CartIcon } from "~/components/icons/cart";
 import { HamburgerMenuIcon } from "~/components/icons/hamburger";
 import { LogoIcon } from "~/components/icons/logo";
+import { navItems } from "~/constants/navigation";
 import { useCloseOnResize } from "~/hooks/useCloseOnResize";
 import { usePreventScroll } from "~/hooks/usePreventScroll";
 import { cn } from "~/lib/utils";
-
-type NavItem = {
-  href: string;
-  label: string;
-};
-
-const navItems: NavItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/headphones", label: "Headphones" },
-  { href: "/speakers", label: "Speakers" },
-  { href: "/earphones", label: "Earphones" },
-];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,7 +63,7 @@ const Header = () => {
 
         <div
           className={cn(
-            "transition-[visibility] md:visible",
+            "transition-[visibility] lg:visible",
             isMenuOpen ? "visible" : "invisible delay-500",
           )}
         >
@@ -107,4 +96,4 @@ const Header = () => {
   );
 };
 
-export { Header, navItems };
+export { Header };

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { Header, navItems } from "./header";
+import { Header } from "./header";
+import { navItems } from "~/constants/navigation";
 
 // Mock the hooks
 vi.mock("~/hooks/usePreventScroll", () => ({
