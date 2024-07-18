@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook } from "@testing-library/react";
-import { useCloseOnResize } from "./useCloseOnResize";
+import { useCloseOnResize } from "~/hooks/useCloseOnResize";
 
 describe("useCloseOnResize", () => {
   let setIsOpenMock: ReturnType<typeof vi.fn>;

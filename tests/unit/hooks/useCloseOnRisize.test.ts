@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { renderHook } from "@testing-library/react";
-import { usePreventScroll } from "./usePreventScroll";
+import { usePreventScroll } from "~/hooks/usePreventScroll";
 
 describe("usePreventScroll", () => {
   afterEach(() => {
