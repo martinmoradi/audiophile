@@ -29,12 +29,12 @@ describe("Header", () => {
   });
 
   describe("Rendering", () => {
-    it("renders without crashing", () => {
+    it("should render without crashing", () => {
       render(<Header />);
       expect(screen.getByRole("banner")).toBeDefined();
     });
 
-    it("logo is present and links to the home page", () => {
+    it("should have a logo that links to the home page", () => {
       render(<Header />);
       const logoLink = screen.getByRole("link", { name: "Logo" });
       expect(logoLink).toBeDefined();
@@ -42,14 +42,14 @@ describe("Header", () => {
       expect(logoLink.querySelector("svg")).toBeDefined();
     });
 
-    it("cart icon is present and links to the cart page", () => {
+    it("should have a cart icon that links to the cart page", () => {
       render(<Header />);
       const cartLink = screen.getByRole("link", { name: "Cart" });
       expect(cartLink).toBeDefined();
       expect(cartLink.getAttribute("href")).toBe("/cart");
     });
 
-    it("hamburger menu icon is present", () => {
+    it("should have a hamburger menu icon", () => {
       render(<Header />);
       const hamburgerButton = screen.getByRole("button", {
         name: /toggle menu/i,
@@ -57,7 +57,7 @@ describe("Header", () => {
       expect(hamburgerButton).toBeDefined();
     });
 
-    it("navigation menu items are rendered correctly", () => {
+    it("should render navigation menu items correctly", () => {
       render(<Header />);
       navItems.forEach((item) => {
         expect(screen.getByRole("link", { name: item.label })).toBeDefined();
@@ -66,7 +66,7 @@ describe("Header", () => {
   });
 
   describe("Navigation Links", () => {
-    it("navigation menu items are rendered with correct hrefs and labels", () => {
+    it("should render navigation menu items with correct hrefs and labels", () => {
       render(<Header />);
       navItems.forEach((item) => {
         expect(screen.getByRole("link", { name: item.label })).toBeDefined();
@@ -78,7 +78,7 @@ describe("Header", () => {
   });
 
   describe("Menu state managment", () => {
-    it("menu is closed by default", () => {
+    it("should have the menu closed by default", () => {
       render(<Header />);
       const hamburgerButton = screen.getByRole("button", {
         name: /toggle menu/i,
@@ -86,7 +86,7 @@ describe("Header", () => {
       expect(hamburgerButton).toHaveAttribute("aria-expanded", "false");
     });
 
-    it("opens menu when hamburger icon is clicked", () => {
+    it("should open the menu when the hamburger icon is clicked", () => {
       render(<Header />);
       const hamburgerButton = screen.getByRole("button", {
         name: /toggle menu/i,
@@ -95,7 +95,7 @@ describe("Header", () => {
       expect(hamburgerButton).toHaveAttribute("aria-expanded", "true");
     });
 
-    it("closes menu when hamburger icon is clicked again", () => {
+    it("should close the menu when the hamburger icon is clicked again", () => {
       render(<Header />);
       const hamburgerButton = screen.getByRole("button", {
         name: /toggle menu/i,
@@ -107,7 +107,7 @@ describe("Header", () => {
   });
 
   describe("Accessibility", () => {
-    it("logo has proper accessibility features", () => {
+    it("should have a logo with proper accessibility features", () => {
       render(<Header />);
       const logoLink = screen.getByRole("link", { name: "Logo" });
       expect(logoLink).toHaveAttribute("href", "/");
@@ -115,13 +115,13 @@ describe("Header", () => {
       expect(logoLink.querySelector(".sr-only")).toHaveTextContent("Logo");
     });
 
-    it("logo has proper sr-only text for screen readers", () => {
+    it("should have a logo with proper sr-only text for screen readers", () => {
       render(<Header />);
       const logoLink = screen.getByRole("link", { name: /logo/i });
       expect(logoLink).toContainHTML('<span class="sr-only">Logo</span>');
     });
 
-    it("cart icon has proper accessibility features", () => {
+    it("should have a cart icon with proper accessibility features", () => {
       render(<Header />);
       const cartLink = screen.getByRole("link", { name: "Cart" });
       expect(cartLink).toHaveAttribute("href", "/cart");
@@ -129,13 +129,13 @@ describe("Header", () => {
       expect(cartLink.querySelector(".sr-only")).toHaveTextContent("Cart");
     });
 
-    it("cart icon has proper sr-only text for screen readers", () => {
+    it("should have a cart icon with proper sr-only text for screen readers", () => {
       render(<Header />);
       const cartLink = screen.getByRole("link", { name: /cart/i });
       expect(cartLink).toContainHTML('<span class="sr-only">Cart</span>');
     });
 
-    it("hamburger menu has proper sr-only text for screen readers", () => {
+    it("should have a hamburger menu with proper sr-only text for screen readers", () => {
       render(<Header />);
       const hamburgerButton = screen.getByRole("button", {
         name: /toggle menu/i,
@@ -145,7 +145,7 @@ describe("Header", () => {
       );
     });
 
-    it("hamburger menu has proper accessibility features", () => {
+    it("should have a hamburger menu with proper accessibility features", () => {
       render(<Header />);
       const hamburgerButton = screen.getByRole("button", {
         name: /toggle menu/i,
