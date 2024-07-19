@@ -7,12 +7,12 @@ interface HamburgerMenuIconProps {
   color?: string;
 }
 
-export const HamburgerMenuIcon: React.FC<HamburgerMenuIconProps> = ({
+export const HamburgerMenuIcon = ({
   isOpened,
   width = 16,
   height = 15,
   color = "currentColor",
-}) => {
+}: HamburgerMenuIconProps) => {
   const svgStyles: CSSProperties = {
     width: `${width}px`,
     height: `${height}px`,

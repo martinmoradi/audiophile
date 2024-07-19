@@ -62,6 +62,7 @@ const config = {
       secondary: "hsl(21, 94%, 75%)",
       white: "hsl(0, 0%, 100%)",
       black: "hsl(0, 0%, 0%)",
+      transparent: "transparent",
       "border-color": "hsl(0, 0%, 20%)",
     },
 
