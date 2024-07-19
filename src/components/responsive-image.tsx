@@ -1,4 +1,5 @@
 import { getImageProps } from "next/image";
+import { cn } from "~/lib/utils";
 
 interface ImageSource {
   src: string;
@@ -7,48 +8,54 @@ interface ImageSource {
   quality?: number;
 }
 
-interface ResponsiveImageProps {
-  desktop: ImageSource;
-  tablet: ImageSource;
+type ResponsiveImageProps = {
   mobile: ImageSource;
-  classNames?: string;
+  tablet?: ImageSource;
+  desktop?: ImageSource;
+  className?: string;
   alt: string;
-  breakpoints?: {
-    desktop: number;
-    tablet: number;
-  };
-}
+  isHero?: boolean;
+  fetchPriority?: "high" | "low" | "auto";
+};
 
 const ResponsiveImage = ({
+  mobile,
   desktop,
   tablet,
-  mobile,
-  classNames,
+  className,
   alt,
-  breakpoints = { desktop: 1024, tablet: 768 },
+  isHero = false,
+  fetchPriority: propFetchPriority,
 }: ResponsiveImageProps) => {
+  const fetchPriority = isHero ? "high" : (propFetchPriority ?? "auto");
+  const loading = isHero ? "eager" : "lazy";
+
   const imageSources = {
-    desktop: getImageProps({ alt, ...desktop }),
-    tablet: getImageProps({ alt, ...tablet }),
+    desktop: desktop ? getImageProps({ alt, ...desktop }) : undefined,
+    tablet: tablet ? getImageProps({ alt, ...tablet }) : undefined,
     mobile: getImageProps({ alt, ...mobile }),
   };
 
   return (
     <picture>
-      <source
-        media={`(min-width: ${breakpoints.desktop}px)`}
-        srcSet={imageSources.desktop.props.srcSet}
-      />
-      <source
-        media={`(min-width: ${breakpoints.tablet}px)`}
-        srcSet={imageSources.tablet.props.srcSet}
-      />
+      {desktop && (
+        <source
+          media="(min-width: 1024px)"
+          srcSet={imageSources.desktop!.props.srcSet}
+        />
+      )}
+      {tablet && (
+        <source
+          media="(min-width: 768px)"
+          srcSet={imageSources.tablet!.props.srcSet}
+        />
+      )}
       <img
-        srcSet={imageSources.mobile.props.srcSet}
+        {...imageSources.mobile.props}
         alt={alt}
-        loading="lazy"
-        className={classNames}
-        style={{ width: "100%", height: "auto" }}
+        loading={loading}
+        fetchPriority={fetchPriority}
+        className={cn("h-auto w-full", className)}
       />
     </picture>
   );
