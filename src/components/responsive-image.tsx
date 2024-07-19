@@ -1,4 +1,4 @@
-import { getImageProps } from "next/image";
+import { getImageProps, type ImageProps } from "next/image";
 import { cn } from "~/lib/utils";
 
 interface ImageSource {
@@ -8,54 +8,63 @@ interface ImageSource {
   quality?: number;
 }
 
-type ResponsiveImageProps = {
+interface ResponsiveImageProps {
+  desktop: ImageSource;
+  tablet: ImageSource;
   mobile: ImageSource;
-  tablet?: ImageSource;
-  desktop?: ImageSource;
-  className?: string;
   alt: string;
   isHero?: boolean;
-  fetchPriority?: "high" | "low" | "auto";
-};
+  className?: string;
+}
 
 const ResponsiveImage = ({
-  mobile,
   desktop,
   tablet,
-  className,
+  mobile,
   alt,
   isHero = false,
-  fetchPriority: propFetchPriority,
+  className,
 }: ResponsiveImageProps) => {
-  const fetchPriority = isHero ? "high" : (propFetchPriority ?? "auto");
+  const common: Partial<ImageProps> = { alt, sizes: "100%" };
+  const fetchPriority = isHero ? "high" : "auto";
   const loading = isHero ? "eager" : "lazy";
 
-  const imageSources = {
-    desktop: desktop ? getImageProps({ alt, ...desktop }) : undefined,
-    tablet: tablet ? getImageProps({ alt, ...tablet }) : undefined,
-    mobile: getImageProps({ alt, ...mobile }),
-  };
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({
+    ...common,
+    ...desktop,
+    alt,
+  });
+
+  const {
+    props: { srcSet: tabletSrcSet },
+  } = getImageProps({
+    ...common,
+    ...tablet,
+    alt,
+  });
+
+  const {
+    props: { srcSet: mobileSrcSet, ...rest },
+  } = getImageProps({
+    ...common,
+    ...mobile,
+    alt,
+  });
 
   return (
     <picture>
-      {desktop && (
-        <source
-          media="(min-width: 1024px)"
-          srcSet={imageSources.desktop!.props.srcSet}
-        />
-      )}
-      {tablet && (
-        <source
-          media="(min-width: 768px)"
-          srcSet={imageSources.tablet!.props.srcSet}
-        />
-      )}
+      <source media="(min-width: 1024px)" srcSet={desktopSrcSet} />
+      <source media="(min-width: 768px)" srcSet={tabletSrcSet} />
+      <source srcSet={mobileSrcSet} />
       <img
-        {...imageSources.mobile.props}
+        {...rest}
+        className={cn("h-auto w-full", className)}
         alt={alt}
         loading={loading}
         fetchPriority={fetchPriority}
-        className={cn("h-auto w-full", className)}
+        {...{ fetchpriority: fetchPriority }}
       />
     </picture>
   );
