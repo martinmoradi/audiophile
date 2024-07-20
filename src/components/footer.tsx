@@ -13,8 +13,9 @@ const Footer = () => {
         <div className="flex w-full flex-col">
           <div className="md:flex md:flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="relative flex justify-center py-20 before:absolute before:left-1/2 before:top-[0.2rem] before:h-[0.4rem] before:w-[10rem] before:-translate-x-1/2 before:bg-primary md:justify-start md:before:left-0 md:before:translate-x-0">
-              <Link href="/">
+              <Link href="/" aria-label="logo">
                 <LogoIcon />
+                <span className="sr-only">Logo</span>
               </Link>
             </div>
             <nav>
@@ -23,7 +24,7 @@ const Footer = () => {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="text-xs uppercase hover:text-primary"
+                      className="text-xs uppercase transition-colors duration-300 hover:text-primary"
                     >
                       {label}
                     </Link>
@@ -44,15 +45,18 @@ const Footer = () => {
             <div className="mb-20 text-center text-base font-bold opacity-50 md:text-start">
               <p>Copyright 2024. All Rights Reserved</p>
             </div>
-            <div className="flex w-full flex-1 justify-center gap-8 pb-20 md:justify-end lg:-mt-[8.5rem] [&>*:hover]:text-primary [&>*]:cursor-pointer">
+            <div className="flex w-full flex-1 justify-center gap-8 pb-20 md:justify-end lg:-mt-[8.5rem] [&>*:hover]:text-primary [&>*:hover]:transition-colors [&>*:hover]:duration-300 [&>*]:cursor-pointer">
               <Link href="/">
-                <FacebookIcon />
+                <FacebookIcon aria-label="facebook" />
+                <span className="sr-only">Facebook</span>
               </Link>
               <Link href="/">
-                <TwitterIcon />
+                <TwitterIcon aria-label="twitter" />
+                <span className="sr-only">Twitter</span>
               </Link>
               <Link href="/">
-                <InstagramIcon />
+                <InstagramIcon aria-label="instagram" />
+                <span className="sr-only">Instagram</span>
               </Link>
             </div>
           </div>
