@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { Manrope } from "next/font/google";
 import { type Metadata } from "next";
 import { Header } from "~/components/header";
+import { Footer } from "~/components/footer";
 
 export const metadata: Metadata = {
   title: "Audiophile",
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.className}>
       <body>
-        <Header />
-        <main>{children}</main>
-        <div></div>
+        <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
