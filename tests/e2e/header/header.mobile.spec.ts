@@ -10,24 +10,33 @@ test.describe("Header Component (Mobile)", () => {
     });
 
     test("should display logo", async ({ page }) => {
-      const logo = page.getByRole("link", { name: /logo/i });
+      const logo = page
+        .getByRole("banner")
+        .getByRole("link", { name: /logo/i });
       await expect(logo).toBeVisible();
     });
 
     test("should have correct href for logo", async ({ page }) => {
-      const logo = page.getByRole("link", { name: /logo/i });
+      const logo = page
+        .getByRole("banner")
+        .getByRole("link", { name: /logo/i });
       await expect(logo).toHaveAttribute("href", "/");
     });
 
     test("should display hamburger menu icon", async ({ page }) => {
-      const toggleMenu = page.getByRole("button", { name: /toggle menu/i });
+      const toggleMenu = page
+        .getByRole("banner")
+        .getByRole("button", { name: /toggle menu/i });
       await expect(toggleMenu).toBeVisible();
     });
 
     test("should display navigation menu when hamburger icon is clicked", async ({
       page,
     }) => {
-      await page.getByRole("button", { name: /toggle menu/i }).click();
+      await page
+        .getByRole("banner")
+        .getByRole("button", { name: /toggle menu/i })
+        .click();
       const nav = page.getByRole("navigation");
       await expect(nav).toBeVisible();
     });
@@ -36,30 +45,40 @@ test.describe("Header Component (Mobile)", () => {
       page,
     }) => {
       await page
+        .getByRole("banner")
         .getByRole("button", { name: /toggle menu/i })
         .click({ clickCount: 2, delay: 100 });
-      const nav = page.getByRole("navigation");
+      const nav = page.getByRole("banner").getByRole("navigation");
       await expect(nav).not.toBeVisible();
     });
 
-    test("should display all navigation items with correct labels and hrefs when menu is openems should render correctly", async ({
+    test("should display all navigation items with correct labels and hrefs when menu is open", async ({
       page,
     }) => {
-      await page.getByRole("button", { name: /toggle menu/i }).click();
+      await page
+        .getByRole("banner")
+        .getByRole("button", { name: /toggle menu/i })
+        .click();
       for (const item of navItems) {
-        const link = page.getByRole("link", { name: item.label });
+        const link = page
+          .getByRole("banner")
+          .getByRole("link", { name: item.label });
         await expect(link).toBeVisible();
         await expect(link).toHaveAttribute("href", item.href);
       }
     });
 
     test("should display cart icon", async ({ page }) => {
-      const cartIcon = page.getByRole("link", { name: /cart/i });
+      const cartIcon = page
+        .getByRole("banner")
+        .getByRole("link", { name: /cart/i });
       await expect(cartIcon).toBeVisible();
     });
 
     test("should have correct href for cart icon", async ({ page }) => {
-      const cartIcon = page.getByRole("link", { name: /cart/i });
+      const cartIcon = page
+        .getByRole("banner")
+        .getByRole("link", { name: /cart/i });
       await expect(cartIcon).toHaveAttribute("href", "/cart");
     });
   });
@@ -73,7 +92,9 @@ test.describe("Header Component (Mobile)", () => {
     test("should prevent scrolling when mobile menu is open", async ({
       page,
     }) => {
-      const toggleMenu = page.getByRole("button", { name: /toggle menu/i });
+      const toggleMenu = page
+        .getByRole("banner")
+        .getByRole("button", { name: /toggle menu/i });
       // Function to get html overflow
       const getHtmlOverflow = () => document.documentElement.style.overflow;
       // Check initial overflow
@@ -94,22 +115,38 @@ test.describe("Header Component (Mobile)", () => {
     test("should close menu when navigation item is clicked", async ({
       page,
     }) => {
-      await page.getByRole("button", { name: /toggle menu/i }).click();
-      await expect(page.getByRole("navigation")).toBeVisible();
-      const link = page.getByRole("link", { name: navItems[0]!.label });
+      await page
+        .getByRole("banner")
+        .getByRole("button", { name: /toggle menu/i })
+        .click();
+      await expect(
+        page.getByRole("banner").getByRole("navigation"),
+      ).toBeVisible();
+      const link = page
+        .getByRole("banner")
+        .getByRole("link", { name: navItems[0]!.label });
       await link.click();
-      await expect(page.getByRole("navigation")).not.toBeVisible();
+      await expect(
+        page.getByRole("banner").getByRole("navigation"),
+      ).not.toBeVisible();
     });
 
     test("should close menu when device orientation changes", async ({
       page,
     }) => {
       // Open menu
-      await page.getByRole("button", { name: /toggle menu/i }).click();
-      await expect(page.getByRole("navigation")).toBeVisible();
+      await page
+        .getByRole("banner")
+        .getByRole("button", { name: /toggle menu/i })
+        .click();
+      await expect(
+        page.getByRole("banner").getByRole("navigation"),
+      ).toBeVisible();
       // Change orientation (simulate rotating the device)
       await page.locator("html").dispatchEvent("orientationchange");
-      await expect(page.getByRole("navigation")).not.toBeVisible();
+      await expect(
+        page.getByRole("banner").getByRole("navigation"),
+      ).not.toBeVisible();
     });
   });
 
@@ -123,7 +160,9 @@ test.describe("Header Component (Mobile)", () => {
       page,
     }) => {
       await page.goto("/cart");
-      const logo = page.getByRole("link", { name: /logo/i });
+      const logo = page
+        .getByRole("banner")
+        .getByRole("link", { name: /logo/i });
       await logo.click();
       await expect(page).toHaveURL("/");
     });
@@ -133,8 +172,13 @@ test.describe("Header Component (Mobile)", () => {
     }) => {
       for (const item of navItems) {
         await page.goto("/");
-        await page.getByRole("button", { name: /toggle menu/i }).click();
-        const link = page.getByRole("link", { name: item.label });
+        await page
+          .getByRole("banner")
+          .getByRole("button", { name: /toggle menu/i })
+          .click();
+        const link = page
+          .getByRole("banner")
+          .getByRole("link", { name: item.label });
         await link.click();
         await expect(page).toHaveURL(item.href);
       }

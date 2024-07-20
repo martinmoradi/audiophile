@@ -18,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={manrope.className}>
-      <body>
+      <body className="antialiased">
         <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
           <Header />
           <main>{children}</main>

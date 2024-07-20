@@ -8,7 +8,7 @@ import { navItems } from "~/constants/navigation";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark px-16 text-white antialiased">
+    <footer className="bg-dark px-16 text-white">
       <Container>
         <div className="flex w-full flex-col">
           <div className="md:flex md:flex-col lg:flex-row lg:items-center lg:justify-between">
