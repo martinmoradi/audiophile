@@ -24,7 +24,7 @@
 - [ ] Create reusable UI components (Button, Card, Input, etc.)
 - [ ] Implement responsive layout components
 - [x] Create navigation bar component
-- [ ] Create footer component
+- [x] Create footer component
 - [ ] Write tests for UI components
 
 ## 4. Database Setup
@@ -44,7 +44,7 @@
 
 ## 6. Home Page
 
-- [ ] Implement hero section with placeholder content
+- [x] Implement hero section with placeholder content
 - [ ] Create category cards section
 - [ ] Add featured products section
 - [ ] Implement about section

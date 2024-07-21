@@ -45,17 +45,17 @@ const Footer = () => {
             <div className="mb-20 text-center text-base font-bold opacity-50 md:text-start">
               <p>Copyright 2024. All Rights Reserved</p>
             </div>
-            <div className="flex w-full flex-1 justify-center gap-8 pb-20 md:justify-end lg:-mt-[8.5rem] [&>*:hover]:text-primary [&>*:hover]:transition-colors [&>*:hover]:duration-300 [&>*]:cursor-pointer">
-              <Link href="/">
-                <FacebookIcon aria-label="facebook" />
+            <div className="mb-20 flex w-full flex-1 justify-center gap-8 md:justify-end lg:-mt-[8.5rem] [&>*:hover]:text-primary [&>*:hover]:transition-colors [&>*:hover]:duration-300 [&>*]:cursor-pointer">
+              <Link href="/" aria-label="facebook">
+                <FacebookIcon />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="/">
-                <TwitterIcon aria-label="twitter" />
+              <Link href="/" aria-label="twitter">
+                <TwitterIcon />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="/">
-                <InstagramIcon aria-label="instagram" />
+              <Link href="/" aria-label="instagram">
+                <InstagramIcon />
                 <span className="sr-only">Instagram</span>
               </Link>
             </div>
