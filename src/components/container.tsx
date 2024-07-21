@@ -7,7 +7,7 @@ interface ContainerProps {
 
 const Container = ({ children, className }: Readonly<ContainerProps>) => {
   return (
-    <div className={cn("mx-auto max-w-[111rem] px-12", className)}>
+    <div className={cn("mx-auto max-w-[min(87vw,111rem)]", className)}>
       {children}
     </div>
   );

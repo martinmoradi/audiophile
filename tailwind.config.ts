@@ -46,8 +46,13 @@ const config = {
         { lineHeight: "5.8rem", letterSpacing: "0.2rem", fontWeight: "700" },
       ],
       "mobile-xl": [
-        "3.6rem",
-        { lineHeight: "4rem", letterSpacing: "0.129rem", fontWeight: "700" },
+        "clamp(3.6rem, calc(3.6rem + 10.23vw - 2.39rem), 5.6rem)",
+        {
+          lineHeight: "clamp(4rem, calc(4rem + 9.23vw - 2.17rem), 5.8rem)",
+          letterSpacing:
+            "clamp(0.129rem, calc(0.129rem + 0.36vw - 0.085rem), 0.2rem)",
+          fontWeight: "700",
+        },
       ],
     },
     colors: {

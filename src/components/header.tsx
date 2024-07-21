@@ -21,7 +21,7 @@ const Header = () => {
       <Container className="flex h-[var(--navigation-height)] justify-between border-b border-border-color">
         <div className="flex flex-1 text-white md:flex-none lg:hidden">
           <button
-            className=""
+            className="-ml-3"
             onClick={() => setIsMenuOpen((prev) => !prev)}
             aria-expanded={isMenuOpen}
             aria-controls="navigation-menu"
@@ -45,7 +45,7 @@ const Header = () => {
         >
           <nav
             className={cn(
-              "lg:bg-transparent fixed left-0 top-[var(--navigation-height)] h-[calc(100vh_-_var(--navigation-height))] w-full overflow-auto bg-dark transition-all duration-500 lg:relative lg:top-0 lg:block lg:h-auto lg:w-auto lg:translate-x-0 lg:overflow-hidden lg:opacity-100 lg:transition-none",
+              "fixed left-0 top-[var(--navigation-height)] h-[calc(100vh_-_var(--navigation-height))] w-full overflow-auto bg-dark transition-all duration-500 lg:relative lg:top-0 lg:block lg:h-auto lg:w-auto lg:translate-x-0 lg:overflow-hidden lg:bg-transparent lg:opacity-100 lg:transition-none",
               isMenuOpen
                 ? "translate-x-0 border-t border-border-color"
                 : "translate-x-[-100vw] opacity-0",
