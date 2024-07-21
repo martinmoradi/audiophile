@@ -52,6 +52,10 @@ const config = {
         "5.6rem",
         { lineHeight: "5.8rem", letterSpacing: "0.2rem", fontWeight: "700" },
       ],
+      "mobile-xl": [
+        "3.6rem",
+        { lineHeight: "4rem", letterSpacing: "0.129rem", fontWeight: "700" },
+      ],
     },
 
     colors: {
