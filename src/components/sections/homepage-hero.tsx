@@ -4,7 +4,7 @@ import { Button } from "~/components/ui/button";
 
 const HomePageHero = () => {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <ResponsiveImage
         className="rounded-b-lg"
         alt="XX99 Mark II Headphones"
@@ -27,7 +27,7 @@ const HomePageHero = () => {
           quality: 100,
         }}
       />
-      <div className="absolute left-0 top-[var(--navigation-height)] flex h-full w-full items-center text-white">
+      <div className="absolute left-0 top-[var(--navigation-height)] flex h-[calc(100%-var(--navigation-height))] w-full items-center text-white">
         <Container className="-mt-[25%] flex h-full w-full items-center justify-center md:-mt-[17.5%] lg:-mt-[10%] lg:justify-start">
           <div className="flex flex-col gap-y-14 md:max-w-[42rem]">
             <span className="text-center text-sm uppercase opacity-50 lg:text-left">
