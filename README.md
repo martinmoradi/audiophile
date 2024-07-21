@@ -21,11 +21,11 @@
 
 - [x] Setup shadcn/ui
 - [x] Create Tailwind theme (colors, fonts, spacing, etc.)
-- [ ] Create reusable UI components (Button, Card, Input, etc.)
-- [ ] Implement responsive layout components
+- [x] Create reusable UI components (Button, Card, Input, etc.)
+- [x] Implement responsive layout components
 - [x] Create navigation bar component
 - [x] Create footer component
-- [ ] Write tests for UI components
+- [x] Write tests for UI components
 
 ## 4. Database Setup
 

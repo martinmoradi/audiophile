@@ -1,5 +1,4 @@
 import * as React from "react";
-// @ts-expect-error missing type definitions
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/lib/utils";
