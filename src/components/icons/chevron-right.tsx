@@ -1,4 +1,4 @@
-const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const ChevronRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="8"
     height="12"
@@ -16,4 +16,4 @@ const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export { ArrowRightIcon };
+export { ChevronRightIcon };

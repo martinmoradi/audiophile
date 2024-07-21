@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config = {
   darkMode: ["class"],
@@ -10,14 +11,6 @@ const config = {
   ],
   prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-
     fontSize: {
       xs: [
         "1.3rem",
@@ -57,7 +50,6 @@ const config = {
         { lineHeight: "4rem", letterSpacing: "0.129rem", fontWeight: "700" },
       ],
     },
-
     colors: {
       primary: "hsl(22, 65%, 57%)",
       dark: "hsl(0, 0%, 6%)",
@@ -68,8 +60,11 @@ const config = {
       black: "hsl(0, 0%, 0%)",
       transparent: "transparent",
       "border-color": "hsl(0, 0%, 20%)",
+      red: "hsl(0, 65%, 49%)",
     },
-
+    fontFamily: {
+      sans: ["var(--font-sans)", ...fontFamily.sans],
+    },
     extend: {
       keyframes: {
         "accordion-down": {

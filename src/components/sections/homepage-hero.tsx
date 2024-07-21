@@ -1,5 +1,6 @@
 import { Container } from "~/components/container";
 import { ResponsiveImage } from "~/components/responsive-image";
+import { Button } from "~/components/ui/button";
 
 const HomePageHero = () => {
   return (
@@ -41,9 +42,7 @@ const HomePageHero = () => {
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </h2>
-            <button className="hover:bg-primary-dark mt-4 self-center bg-primary px-8 py-3 text-white transition-colors lg:self-start">
-              See product
-            </button>
+            <Button>See product</Button>
           </div>
         </Container>
       </div>
