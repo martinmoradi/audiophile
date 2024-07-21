@@ -1,9 +1,9 @@
-import { Hero } from "~/components/sections/hero";
+import { HomePageHero } from "~/components/sections/homepage-hero";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <HomePageHero />
     </>
   );
 }
