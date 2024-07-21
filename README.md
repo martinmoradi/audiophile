@@ -19,12 +19,13 @@
 
 ## 3. UI Foundation
 
-- [ ] Create Tailwind theme (colors, fonts, spacing, etc.)
-- [ ] Create reusable UI components (Button, Card, Input, etc.)
-- [ ] Implement responsive layout components
-- [ ] Create navigation bar component
-- [ ] Create footer component
-- [ ] Write tests for UI components
+- [x] Setup shadcn/ui
+- [x] Create Tailwind theme (colors, fonts, spacing, etc.)
+- [x] Create reusable UI components (Button, Card, Input, etc.)
+- [x] Implement responsive layout components
+- [x] Create navigation bar component
+- [x] Create footer component
+- [x] Write tests for UI components
 
 ## 4. Database Setup
 
@@ -43,7 +44,7 @@
 
 ## 6. Home Page
 
-- [ ] Implement hero section with placeholder content
+- [x] Implement hero section with placeholder content
 - [ ] Create category cards section
 - [ ] Add featured products section
 - [ ] Implement about section
