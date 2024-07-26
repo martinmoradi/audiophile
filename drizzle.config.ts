@@ -9,4 +9,6 @@ export default {
     url: env.POSTGRES_URL,
   },
   tablesFilter: ["audiophile_*"],
+  verbose: true,
+  strict: true,
 } satisfies Config;
