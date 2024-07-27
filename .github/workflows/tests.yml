@@ -37,7 +37,7 @@ jobs:
       - name: Check if tests should run
         id: check_tests
         run: |
-          if [[ "${{ github.head_ref || github.ref_name }}" == "db-setup" ]]; then
+          if [[ "${{ github.head_ref || github.ref_name }}" == "feature/db-setup" ]]; then
             echo "::set-output name=should_run::false"
           else
             echo "::set-output name=should_run::true"
