@@ -8,7 +8,7 @@ export default {
   dbCredentials: {
     url: env.POSTGRES_URL,
   },
-  tablesFilter: ["audiophile_*"],
+  tablesFilter: ["ap_*"],
   verbose: true,
   strict: true,
 } satisfies Config;

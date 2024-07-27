@@ -14,7 +14,7 @@ import {
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 
-export const createTable = pgTableCreator((name) => `audiophile_${name}`);
+export const createTable = pgTableCreator((name) => `ap_${name}`);
 
 export const userRole = pgEnum("user_role", ["ADMIN", "CUSTOMER"]);
 
@@ -40,12 +40,12 @@ export const users = createTable(
 );
 
 export const customers = createTable("customer", {
+  id: varchar("id").$defaultFn(createId).primaryKey(),
   firstName: varchar("first_name", { length: 100 }).notNull(),
   lastName: varchar("last_name", { length: 100 }).notNull(),
   phoneNumber: varchar("phone_number", { length: 100 }),
 
   userId: varchar("user_id")
-    .primaryKey()
     .references(() => users.id, { onDelete: "cascade" })
     .notNull()
     .unique(),
@@ -82,7 +82,6 @@ export const customerAddresses = createTable(
     ),
   },
   (customerAddress) => ({
-    customerIdIndex: index("customer_id_idx").on(customerAddress.customerId),
     uniqueAddress: uniqueIndex("unique_address_idx").on(
       customerAddress.customerId,
       customerAddress.street,
@@ -129,8 +128,7 @@ export const products = createTable(
     ),
   },
   (product) => ({
-    categoryIndex: index("category_id_idx").on(product.categoryId),
-    newProductIndex: index("is_new_idx").on(product.isNew),
+    newProductIndex: index("products_is_new_idx").on(product.isNew),
   }),
 );
 
@@ -162,19 +160,17 @@ export const productImages = createTable(
     ),
   },
   (productImage) => ({
-    productIdIndex: index("product_id_idx").on(productImage.productId),
-    productTypeIndex: index("product_type_idx").on(productImage.type),
+    imageTypeIndex: index("product_images_type_idx").on(productImage.type),
   }),
 );
 
 export const relatedProducts = createTable(
   "related_product",
   {
-    id: varchar("id").$defaultFn(createId).primaryKey(),
     productId: varchar("product_id")
       .references(() => products.id, { onDelete: "cascade" })
       .notNull(),
-    relatedProductId: varchar("related_product_id"),
+    relatedProductId: varchar("related_product_id").notNull(),
 
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
@@ -184,27 +180,23 @@ export const relatedProducts = createTable(
     ),
   },
   (relationship) => ({
-    productIdIndex: index("product_id_idx").on(relationship.productId),
-    relatedProductIdIndex: index("related_product_id_idx").on(
-      relationship.relatedProductId,
-    ),
-    uniqueRelationship: uniqueIndex("unique_related_product_idx").on(
-      relationship.productId,
-      relationship.relatedProductId,
-    ),
+    pk: primaryKey({
+      columns: [relationship.productId, relationship.relatedProductId],
+    }),
   }),
 );
 
 export const cartStatus = pgEnum("cart_status", ["ACTIVE", "CHECKED_OUT"]);
 
 export const cart = createTable("cart", {
+  id: varchar("id").$defaultFn(createId).primaryKey(),
   totalInCents: integer("total").notNull().default(0),
   status: cartStatus("status").notNull().default("ACTIVE"),
 
   customerId: varchar("customer_id")
     .references(() => customers.userId, { onDelete: "cascade" })
     .notNull()
-    .primaryKey(),
+    .unique(),
 
   createdAt: timestamp("created_at", { withTimezone: true })
     .default(sql`CURRENT_TIMESTAMP`)
@@ -217,7 +209,6 @@ export const cart = createTable("cart", {
 export const productItem = createTable(
   "product_item",
   {
-    id: varchar("id").$defaultFn(createId).primaryKey(),
     priceInCents: integer("price").notNull(),
     quantity: integer("quantity").notNull(),
 
@@ -236,12 +227,7 @@ export const productItem = createTable(
     ),
   },
   (productItem) => ({
-    productIdIndex: index("product_id_idx").on(productItem.productId),
-    cartIdIndex: index("cart_id_idx").on(productItem.cartId),
-    uniqueProductInCart: uniqueIndex("unique_product_in_cart_idx").on(
-      productItem.productId,
-      productItem.cartId,
-    ),
+    pk: primaryKey({ columns: [productItem.productId, productItem.cartId] }),
     quantityCheck: sql`CONSTRAINT positive_quantity CHECK (quantity > 0)`,
     priceCheck: sql`CONSTRAINT positive_price CHECK (price > 0)`,
   }),
@@ -259,10 +245,10 @@ export const orders = createTable(
   "order",
   {
     id: varchar("id").$defaultFn(createId).primaryKey(),
-    subtotalInCents: integer("total").notNull(),
+    subtotalInCents: integer("sub_total").notNull(),
     taxInCents: integer("tax").notNull(),
     shippingFeeInCents: integer("shipping_fee").notNull(),
-    totalInCents: integer("grand_total").notNull(),
+    totalInCents: integer("total").notNull(),
     paymentMethod: varchar("payment_method", { length: 50 }),
     notes: text("notes"),
 
@@ -275,12 +261,12 @@ export const orders = createTable(
     customerId: varchar("customer_id")
       .references(() => customers.userId, { onDelete: "cascade" })
       .notNull(),
-    shippingAddressId: varchar("shipping_address_id").references(
-      () => customerAddresses.id,
-    ),
-    billingAddressId: varchar("billing_address_id").references(
-      () => customerAddresses.id,
-    ),
+    shippingAddressId: varchar("shipping_address_id")
+      .references(() => customerAddresses.id)
+      .notNull(),
+    billingAddressId: varchar("billing_address_id")
+      .references(() => customerAddresses.id)
+      .notNull(),
 
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
@@ -290,13 +276,8 @@ export const orders = createTable(
     ),
   },
   (order) => ({
-    customerIdIndex: index("customer_id_idx").on(order.customerId),
-    shippingAddressIndex: index("shipping_address_idx").on(
-      order.shippingAddressId,
-    ),
-    billingAddressIndex: index("billing_address_idx").on(
-      order.billingAddressId,
-    ),
+    statusIndex: index("orders_status_idx").on(order.status),
+    createdAtIndex: index("orders_created_at_idx").on(order.createdAt),
     totalCheck: sql`CONSTRAINT check_total CHECK (total_in_cents = subtotal_in_cents + tax_in_cents + shipping_fee_in_cents)`,
     nonNegativeChecks: sql`
       CONSTRAINT non_negative_subtotal CHECK (subtotal_in_cents >= 0),
@@ -318,7 +299,6 @@ export const orders = createTable(
 export const orderItems = createTable(
   "order_item",
   {
-    id: varchar("id").$defaultFn(createId).primaryKey(),
     quantity: integer("quantity").notNull(),
     priceInCents: integer("price").notNull(),
 
@@ -334,8 +314,7 @@ export const orderItems = createTable(
       .notNull(),
   },
   (orderItem) => ({
-    orderIdIndex: index("order_id_idx").on(orderItem.orderId),
-    productIdIndex: index("product_id_idx").on(orderItem.productId),
+    pk: primaryKey({ columns: [orderItem.orderId, orderItem.productId] }),
     quantityCheck: sql`CONSTRAINT positive_quantity CHECK (quantity > 0)`,
     priceCheck: sql`CONSTRAINT positive_price CHECK (price > 0)`,
   }),
@@ -372,14 +351,12 @@ export const accounts = createTable(
   },
   (account) => ({
     pk: primaryKey({ columns: [account.provider, account.providerAccountId] }),
-    userIdIndex: index("user_id_idx").on(account.userId),
   }),
 );
 
 export const emailVerificationTokens = createTable(
   "email_verification_token",
   {
-    id: varchar("id").$defaultFn(createId).primaryKey(),
     email: varchar("email", { length: 254 }).notNull(),
     token: varchar("token").notNull().unique(),
     expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
@@ -394,7 +371,6 @@ export const emailVerificationTokens = createTable(
 export const passwordResetTokens = createTable(
   "password_reset_token",
   {
-    id: varchar("id").$defaultFn(createId).primaryKey(),
     email: varchar("email", { length: 254 }).notNull(),
     token: varchar("token").notNull().unique(),
     expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),

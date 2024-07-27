@@ -9,6 +9,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
+    "db:nuke": "export $(cat .env | grep -v '^#' | xargs) && psql \"${POSTGRES_URL}\" -c 'DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA public;'",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
