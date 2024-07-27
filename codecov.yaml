@@ -1,0 +1,7 @@
+ignore:
+  - "tests/*"
+  - "**/*.config.js"
+  - "**/*.config.ts"
+  - "src/server/db/*"
+  - "drizzle/*"
+  - "env.js"
