@@ -31,8 +31,8 @@
 
 - [x] Set up Vercel Postgres (or Neon)
 - [x] Configure Drizzle ORM
-- [ ] Create schema for products and categories
-- [ ] Set up database migrations
+- [x] Create schema for products and categories
+- [x] Set up database migrations
 
 ## 5. Authentication
 
