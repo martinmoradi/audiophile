@@ -31,15 +31,20 @@
 
 - [x] Set up Vercel Postgres (or Neon)
 - [x] Configure Drizzle ORM
-- [ ] Create initial schema for products and categories
-- [ ] Set up database migrations
-- [ ] Write tests for database operations
+- [x] Create schema for products and categories
+- [x] Set up database migrations
 
 ## 5. Authentication
 
-- [ ] Set up Next-Auth
+- [ ] Set up Next-Auth / React Query
+- [ ] Middleware
+- [ ] Login/Register pages
+- [ ] Schema for auth
 - [ ] Create sign-in and sign-out functionality
+- [ ] Mail confirmation
+- [ ] Reset password
 - [ ] Implement protected routes
+- [ ] Role
 - [ ] Write tests for authentication flow
 
 ## 6. Home Page
@@ -50,24 +55,24 @@
 - [ ] Implement about section
 - [ ] Write tests for home page components
 
-## 7. Product Listing
+## 7. Category Page
 
-- [ ] Create dynamic product listing page
-- [ ] Implement basic filtering functionality
-- [ ] Add sorting options
+- [ ] Create dynamic category page
+- [ ] Products card
 - [ ] Write tests for product listing functionality
 
 ## 8. Product Detail
 
 - [ ] Create dynamic product detail page
-- [ ] Implement image gallery (consider using next/image)
+- [ ] Implement image gallery
+- [ ] Recommendation section
 - [ ] Add "Add to Cart" button (non-functional at this stage)
 - [ ] Write tests for product detail page
 
 ## 9. Shopping Cart
 
-- [ ] Implement cart state management (e.g., with React Context or Zustand)
-- [ ] Create cart modal/sidebar
+- [ ] Implement cart state management (Zustand)
+- [ ] Create cart parallel route
 - [ ] Implement add to cart functionality
 - [ ] Add remove from cart and update quantity features
 - [ ] Write tests for cart functionality
