@@ -12,13 +12,13 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
-import { LoginSchema } from "~/lib/validation-schemas";
+import { SignInSchema } from "~/lib/validation-schemas";
 import { Button } from "~/components/ui/button";
 import { PasswordInput } from "~/app/(auth)/_components/password-input";
 
 const SignInForm = () => {
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof SignInSchema>>({
+    resolver: zodResolver(SignInSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -28,10 +28,7 @@ const SignInForm = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <Form {...form}>
-        <form
-          onSubmit={() => null}
-          className="flex w-[48rem] flex-col space-y-12"
-        >
+        <form onSubmit={() => null} className="flex flex-col space-y-12">
           <FormField
             control={form.control}
             name="email"
@@ -42,7 +39,7 @@ const SignInForm = () => {
                   <Input
                     {...field}
                     // disabled={isPending}
-                    placeholder="john.doe@example.com"
+                    placeholder="Enter your email address."
                     type="email"
                     aria-label="Email input field"
                   />
