@@ -33,12 +33,12 @@ const AuthForm = ({
   //   signIn(provider, { callbackUrl: DEFAULT_LOGIN_REDIRECT });
   // };
   return (
-    <Container className="w-full">
-      <Card className="shadow-md">
+    <Container className="w-full p-8">
+      <Card className="bg-lighter shadow-md">
         <CardHeader>
           <div className="flex w-full flex-col items-center justify-center gap-y-10 pt-10">
             <LogoIcon className="text-dark" />
-            <div className="flex items-center gap-8">
+            <div className="mx-auto flex items-center justify-center gap-8">
               <h1 className="text-4xl font-semibold uppercase">
                 {headerLabel}{" "}
                 <span className="font-bold text-primary">
