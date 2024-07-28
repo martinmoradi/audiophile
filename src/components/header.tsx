@@ -17,7 +17,7 @@ const Header = () => {
   useCloseOnResize(setIsMenuOpen);
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full">
+    <header className="fixed left-0 top-0 z-50 w-full bg-dark">
       <Container className="flex h-[var(--navigation-height)] justify-between border-b border-border-color">
         <div className="flex flex-1 text-white md:flex-none lg:hidden">
           <button
