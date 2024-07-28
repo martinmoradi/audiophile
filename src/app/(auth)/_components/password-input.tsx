@@ -1,5 +1,4 @@
 import type { Control, FieldPath, FieldValues } from "react-hook-form";
-import { Button } from "~/components/ui/button";
 import {
   FormControl,
   FormField,
@@ -23,7 +22,7 @@ const PasswordInput = <TFieldValues extends FieldValues>({
   control,
   name,
   label = "Password",
-  placeholder = "********",
+  placeholder = "Enter your password.",
   disabled = false,
 }: PasswordInputProps<TFieldValues>) => {
   const [showPassword, setShowPassword] = useState(false);
