@@ -30,7 +30,7 @@ const Header = () => {
             <span className="sr-only">Toggle menu</span>
           </button>
         </div>
-        <div className="ml-0 flex items-center md:ml-20 lg:ml-0 lg:flex-1">
+        <div className="ml-0 flex items-center text-white md:ml-20 lg:ml-0 lg:flex-1">
           <Link href="/" aria-label="logo">
             <LogoIcon />
             <span className="sr-only">Logo</span>
