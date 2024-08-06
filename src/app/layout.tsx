@@ -15,13 +15,18 @@ const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  modal,
+}: Readonly<{ children: React.ReactNode; modal: React.ReactNode }>) {
   return (
     <html lang="en" className={fontSans.variable}>
       <body className="antialiased">
         <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto]">
           <Header />
-          <main>{children}</main>
+          <main>
+            {children}
+            {modal}
+            <div id="modal-root" />
+          </main>
           <Footer />
         </div>
       </body>
