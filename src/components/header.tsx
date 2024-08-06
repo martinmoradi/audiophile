@@ -75,7 +75,13 @@ const Header = () => {
           </nav>
         </div>
 
-        <div className="flex flex-1 items-center">
+        <div className="flex flex-1 items-center text-white">
+          <Link href="/signin" className="ml-8 text-lg">
+            Sign In
+          </Link>
+          <Link href="/signup" className="ml-4 text-lg">
+            Sign Up
+          </Link>
           <Link
             href="/cart"
             className="ml-auto text-white hover:text-primary"
