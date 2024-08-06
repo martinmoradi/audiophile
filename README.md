@@ -39,6 +39,7 @@
 - [ ] Set up Next-Auth / React Query
 - [ ] Middleware
 - [ ] Login/Register pages
+- [ ] Modal on desktop with parallel routes
 - [ ] Schema for auth
 - [ ] Create sign-in and sign-out functionality
 - [ ] Mail confirmation
@@ -50,6 +51,7 @@
 ## 6. Home Page
 
 - [x] Implement hero section with placeholder content
+- [ ] Fix hero at 1040px wide
 - [ ] Create category cards section
 - [ ] Add featured products section
 - [ ] Implement about section
