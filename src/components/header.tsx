@@ -17,7 +17,7 @@ const Header = () => {
   useCloseOnResize(setIsMenuOpen);
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full">
+    <header className="fixed left-0 top-0 z-50 w-full bg-dark">
       <Container className="flex h-[var(--navigation-height)] justify-between border-b border-border-color">
         <div className="flex flex-1 text-white md:flex-none lg:hidden">
           <button
@@ -30,7 +30,7 @@ const Header = () => {
             <span className="sr-only">Toggle menu</span>
           </button>
         </div>
-        <div className="ml-0 flex items-center md:ml-20 lg:ml-0 lg:flex-1">
+        <div className="ml-0 flex items-center text-white md:ml-20 lg:ml-0 lg:flex-1">
           <Link href="/" aria-label="logo">
             <LogoIcon />
             <span className="sr-only">Logo</span>
@@ -75,7 +75,13 @@ const Header = () => {
           </nav>
         </div>
 
-        <div className="flex flex-1 items-center">
+        <div className="flex flex-1 items-center text-white">
+          <Link href="/signin" className="ml-8 text-lg">
+            Sign In
+          </Link>
+          <Link href="/signup" className="ml-4 text-lg">
+            Sign Up
+          </Link>
           <Link
             href="/cart"
             className="ml-auto text-white hover:text-primary"

@@ -71,6 +71,9 @@ const config = {
       sans: ["var(--font-sans)", ...fontFamily.sans],
     },
     extend: {
+      borderRadius: {
+        form: "0.8rem",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
