@@ -7,7 +7,7 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Lock } from "lucide-react";
 import { useState } from "react";
 
 interface PasswordInputProps<TFieldValues extends FieldValues> {
@@ -36,6 +36,7 @@ const PasswordInput = <TFieldValues extends FieldValues>({
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <div className="relative">
+              <Lock className="absolute left-5 top-1/2 h-6 w-6 -translate-y-1/2 text-black/30" />
               <Input
                 {...field}
                 disabled={disabled}
